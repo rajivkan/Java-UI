@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Index 4 Page</title>
+		<style type="text/css">
+			table{
+				width: 400px;
+			}
+
+			table, tr, td{
+				border: 1px #000 dotted;
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="http://localhost/test/login.php" method="GET">
+			<table>
+				<tr>
+					<td>
+						Username:
+					</td>
+					<td>
+						<input name="uname">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password:
+					</td>
+					<td>
+						<input name="pass" type="password">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Remember:
+					</td>
+					<td>
+						<textarea name="desc"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="reset" value="Reset">
+					</td>
+					<td>
+						<input type="submit" value="Login">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
