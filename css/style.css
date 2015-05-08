@@ -1,0 +1,44 @@
+body{
+	background: #ccc;
+}
+
+
+
+@font-face {
+    font-family: sansationFont;
+    src: url(../fonts/sansation_light.woff);
+}
+
+@font-face {
+    font-family: sansationFont;
+    src: url(../fonts/sansation_bold.woff);
+    font-weight: bold;
+}
+
+.custom-font{
+	font-family: sansationFont;
+	color:green;
+}
+
+.system-font{
+	color:red;
+	font-family: verdana;
+}
+
+
+
+
+button{
+	color: #ffffff;
+	background: #333;
+	border: 1px #ff0000 solid;
+	font-size: 20px;
+}
+
+button:hover{
+	color: #333;
+	background: #ff00ff;
+	border: 1px #ff0000 solid;
+	font-size: 20px;
+	cursor: pointer; /* pointer / wait / default */
+}
