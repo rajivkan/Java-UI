@@ -42,3 +42,20 @@ button:hover{
 	font-size: 20px;
 	cursor: pointer; /* pointer / wait / default */
 }
+
+
+#container{
+	background: green;
+}
+
+#container p{
+	color: white;
+}
+
+#container span{
+	color: red;
+}
+
+.label1{
+	color: yellow;
+}
