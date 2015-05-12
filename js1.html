@@ -3,17 +3,60 @@
 		<script type="text/javascript">
 			//alert("Welcome to Javascript");
 
-			var flag = confirm("Are you sure you want to delete this record?");
-			if(flag == true){
-				alert("Record is deleted.");
-			}
-			else{
-				alert("Cancelled");
-			}
+			// var flag = confirm("Are you sure you want to delete this record?");
+			// if(flag == true){
+			// 	alert("Record is deleted.");
+			// }
+			// else{
+			// 	alert("Cancelled");
+			// }
 			
+			// var name = prompt("Enter your name: ");
+			// alert("You name is " + name);
+
+			
+			// function onLoadEvent(){
+			// 	var div = document.createElement("div");
+			// 	div.innerHTML = "This is a dynamic created element";
+
+			// 	document.getElementById("bodyTag").appendChild(div);
+			// }
+
+			var onLoadEvent = function(){
+				var div = document.createElement("div");
+				div.innerHTML = "This is a dynamic created element";
+				var body = document.getElementById("bodyTag");
+				body.appendChild(div);
+				debugger;
+				var spans = document.getElementsByTagName("span");
+				console.log("length of the span elements: "+ spans.length);
+
+				var labels = document.getElementsByTagName("label");
+				console.log("length of the label elements: "+ labels.length);
+
+
+				var class1Elements = document.getElementsByClassName("class1");
+				console.log("length of the class1 elements: "+ class1Elements.length);
+
+				var names = document.getElementsByName("spanName");
+				console.log("length of the spanName elements: "+ names.length);
+				if(names.length > 0){
+					names[0].innerHTML = "span1 is modified";
+				}
+
+			};
 		</script>
 	</head>
-	<body>
+	<body id="bodyTag" onload="onLoadEvent()">
 		this is body tag
+		<br><span id="span1" class="class1" name="spanName"> span 1</span>
+		<br><span> span 2</span>
+		<br><span id="span1" class="class1"> span 3</span>
+
+		<br><br><label class="class1" name="spanName"> label 1</label>
+		<br><label class="class1"> label 2</label>
+		<br><label> label 3</label>
+		<br><label class="class1"> label 4</label>
+		<br>
 	</body>
 </html>
