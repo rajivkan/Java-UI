@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function onMouseOver(img){
+				//var img = document.getElementById("imgOnOff");
+				img.src = "images/On.png"
+			}
+
+			function onMouseOut(img){
+				//var img = document.getElementById("imgOnOff");
+				img.src = "images/Off.png"
+			}
+
+			function onImageChange(){
+				var img = document.getElementById("imgOnOff");
+				//if(img.src.match("Off.png") != null){
+				if(img.src.indexOf("images/Off.png") != -1){
+					img.src = "images/On.png";
+				}else{
+					img.src = "images/Off.png";
+				}
+			}
+			var timer = null;
+			function onChangeImageAuto(){
+				timer = setInterval(function(){
+					onImageChange();
+				}, 500)
+			}
+
+			function onStopChangingImage(){
+				if(timer != null){
+					clearInterval(timer);
+					timer = null;
+				}
+			}
+
+			setTimeout(function(){
+				onChangeImageAuto();
+			}, 2000);
+
+			var arr = ["apple.jpeg", "On.png", "Off.png"];
+			
+		</script>
+	</head>
+	<body>
+		<img id="imgOnOff" src="images/Off.png" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" title="Change Image">
+		<button onClick="onImageChange()">Change Image Manual</button>
+
+		<button onClick="onChangeImageAuto()">Change Image Auto</button>
+
+		<button onClick="onStopChangingImage()">Stop Changing Image</button>
+	</body>
+</html>

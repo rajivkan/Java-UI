@@ -14,12 +14,15 @@
 			// var name = prompt("Enter your name: ");
 			// alert("You name is " + name);
 
+			// var div = document.createElement("div");
+			// div.innerHTML = "This is a dynamic created element";
+			// document.getElementById("bodyTag").appendChild(div);
 			
 			// function onLoadEvent(){
 			// 	var div = document.createElement("div");
 			// 	div.innerHTML = "This is a dynamic created element";
 
-			// 	document.getElementById("bodyTag").appendChild(div);
+			// 	document.getElementById("div1").appendChild(div);
 			// }
 
 			var onLoadEvent = function(){
@@ -44,11 +47,14 @@
 					names[0].innerHTML = "span1 is modified";
 				}
 
-			};
+			 };
 		</script>
 	</head>
-	<body id="bodyTag" onload="onLoadEvent()">
+	<body id="bodyTag" onload="onLoadEvent()"> <!--  -->
 		this is body tag
+		<div id="div1">
+			This is a div
+		</div>
 		<br><span id="span1" class="class1" name="spanName"> span 1</span>
 		<br><span> span 2</span>
 		<br><span id="span1" class="class1"> span 3</span>
