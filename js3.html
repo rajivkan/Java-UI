@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+			// 1 2 3 4 5 6 7 .... 100
+			function onLoadEvent(){
+				var divNumber = document.getElementById("divNumber");
+				for(var i = 1; i<=100 ;i++){
+					divNumber.innerHTML = divNumber.innerHTML + i + " ";
+				}
+
+				for(var i = 1; i <= 100; i++){
+					var divEvenNumber = document.getElementById("divEvenNumber");
+					if(i % 2 == 0){
+						divEvenNumber.innerHTML = divEvenNumber.innerHTML + i + " ";
+					}
+				}
+
+				for(var i = 1; i <= 100; i++){
+					var divOddNumber = document.getElementById("divOddNumber");
+					if(i % 2 != 0){
+						divOddNumber.innerHTML = divOddNumber.innerHTML + i + " ";
+					}
+				}
+
+				// for Exercise
+				// print prime number between 1 to 100 using for loop
+			}
+		</script>
+	</head>
+	<body onload="onLoadEvent()">
+		<div id="divNumber">
+
+		</div>
+<br><br>
+		<div id="divEvenNumber">
+
+		</div>
+<br><br>
+		<div id="divOddNumber">
+
+		</div>
+<br><br>
+		<div id="divPrimeNumber">
+
+		</div>
+	</body>
+</html>

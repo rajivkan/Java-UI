@@ -23,8 +23,9 @@
 			var timer = null;
 			function onChangeImageAuto(){
 				timer = setInterval(function(){
-					onImageChange();
-				}, 500)
+					//onImageChange();
+					changeImages();
+				}, 2000)
 			}
 
 			function onStopChangingImage(){
@@ -39,11 +40,23 @@
 			}, 2000);
 
 			var arr = ["apple.jpeg", "On.png", "Off.png"];
-			
+			var currentIndex = 0;
+			function changeImages(){
+				if(currentIndex > arr.length - 1){
+					currentIndex = 0;
+				}
+				var img = document.getElementById("arrImg");
+				img.src = "images/" + arr[currentIndex];
+				currentIndex = currentIndex + 1;
+			}
+
 		</script>
 	</head>
 	<body>
 		<img id="imgOnOff" src="images/Off.png" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" title="Change Image">
+<br>
+<br>
+		<img id="arrImg" src="images/Off.png" style="height:250px; width: 250px">
 		<button onClick="onImageChange()">Change Image Manual</button>
 
 		<button onClick="onChangeImageAuto()">Change Image Auto</button>
