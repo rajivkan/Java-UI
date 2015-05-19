@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function onLoadEvent(){
+				var divNumber = document.getElementById("divNumber");
+				var i = 1;
+				while(i <= 100){
+					divNumber.innerHTML = divNumber.innerHTML + i + " ";
+					// if(i >= 100){
+					// 	break;
+					// }
+					i++;
+				}
+
+				// for exercise
+
+				// print even numbers between 1 to 100 using while loop
+				// print odd numbers between 1 to 100 using while loop
+				
+			}
+		</script>
+	</head>
+	<body onload="onLoadEvent()">
+		<div id="divNumber">
+
+		</div>
+	</body>
+</html>

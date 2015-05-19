@@ -1,0 +1,30 @@
+<html>
+	<head>
+
+		<script type="text/javascript">
+
+			/*
+				*
+				**
+				***
+				****
+				*****
+			*/
+			function onPrintStars(){
+				var divStar = document.getElementById("divStar");
+				for(var i=1; i<=5;i++){
+					for(var j=1; j<=i; j++){
+						divStar.innerHTML = divStar.innerHTML + "*";
+					}
+					divStar.innerHTML = divStar.innerHTML + "<br>";
+				}
+			}
+			
+		</script>
+
+	</head>
+	<body>
+		<div id="divStar"></div>
+		<button onclick="onPrintStars()">Print Stars</button>
+	</body>
+</html>
