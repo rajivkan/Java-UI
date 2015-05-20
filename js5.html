@@ -6,7 +6,7 @@
 				var i = 1;
 				while(i <= 100){
 					divNumber.innerHTML = divNumber.innerHTML + i + " ";
-					// if(i >= 100){
+					// if(i >= 100 && true){
 					// 	break;
 					// }
 					i++;
@@ -17,11 +17,34 @@
 				// print even numbers between 1 to 100 using while loop
 				// print odd numbers between 1 to 100 using while loop
 				
+				var divEvenNumber = document.getElementById("divEvenNumber");
+				var divOddNumber = document.getElementById("divOddNumber");
+				i = 1;
+
+				while(i <= 100){
+					if(i % 2 == 0 && i <= 50){
+						divEvenNumber.innerHTML = divEvenNumber.innerHTML + i + " ";
+					}
+
+					if(i % 2 != 0){
+						divOddNumber.innerHTML = divOddNumber.innerHTML + i + " ";
+					}
+					
+					i++;
+				}
 			}
 		</script>
 	</head>
 	<body onload="onLoadEvent()">
 		<div id="divNumber">
+
+		</div>
+		<br><br>Even Numbers
+		<div id="divEvenNumber">
+
+		</div>
+<br><br> Odd Numbers
+		<div id="divOddNumber">
 
 		</div>
 	</body>

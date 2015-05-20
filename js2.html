@@ -50,9 +50,20 @@
 				currentIndex = currentIndex + 1;
 			}
 
+			var m_names = new Array("January", "February", "March", 
+										"April", "May", "June", "July", "August", "September", 
+										"October", "November", "December");
+
+			setInterval(function(){
+				var dt = new Date();
+				document.getElementById("spnDateTime").innerHTML = m_names[dt.getMonth()] +"-"+dt.getDate()+"-"+  dt.getFullYear()+"   "+ dt.toLocaleTimeString();
+			}, 1000);
+
 		</script>
 	</head>
 	<body onload="onChangeImageAuto()">
+		<span id="spnDateTime" style="float: right;"></span>
+
 		<img id="imgOnOff" src="images/Off.png" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" title="Change Image">
 <br>
 <br>
