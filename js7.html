@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Index 4 Page</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style type="text/css">
+			table{
+				width: 400px;
+			}
+
+			table, tr, td{
+				border: 1px #000 dotted;
+				border-collapse: collapse;
+			}
+		</style>
+		<script type="text/javascript">
+			function validation(){
+				var uname = document.getElementById("txtUname");
+				var password = document.getElementById("txtPassword");
+				var email = document.getElementById("txtEmail");
+				if(uname.value == ""){
+					alert("Username is required.");
+					uname.focus();
+					return false;
+				}
+				if(password.value == ""){
+					alert("Password is required.");
+					password.focus();
+					return false;
+				}
+				if(email.value == ""){
+					alert("Email is required.");
+					email.focus();
+					return false;
+				}
+				var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    			if(!re.test(email.value)){
+    				alert("Email is not in correct format.");
+    				email.focus();
+    				return false;
+    			}
+
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form id="formRegister" name="formRegister" action="http://localhost/test/login.php" method="GET">
+			<table>
+				<tr>
+					<td>
+						Username:
+					</td>
+					<td>
+						<input name="uname" id="txtUname">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password:
+					</td>
+					<td>
+						<input name="pass" type="password" id="txtPassword">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<input id="txtEmail" name="email">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="reset" value="Reset">
+					</td>
+					<td>
+						<input type="submit" value="Register" onclick="return validation()">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
