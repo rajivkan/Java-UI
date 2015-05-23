@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>JQuery</title>
+		<script type="text/javascript" src="js/plugins/jquery/jquery-1.11.3.js"></script>
+		<style type="text/css">
+
+			#div1{
+				color: blue;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				//alert("Form loaded.");
+
+				$("body").click(function(){
+					$("body").css("background-color", "green");
+					// $("body").css("background-color", "#ff0000");
+					// $("body").css("background-color", "rgb(216, 138, 138)");
+					// $("body").css("background-color", "rgba(255, 255, 123, 0.5)");
+					//document.getElementsByTagName("body")[0].style.backgroundColor = "#cc00cc";
+
+					$("#div1").css("color", "#ffffff");
+
+					$(".abc").css("color", "#ffffff");
+
+					$(".xyz").css("color", "#ff00ff");
+
+					var spans = $("#div1 span");
+					spans.css("color", "red");
+
+				});
+
+
+			});
+
+
+		</script>
+	</head>
+	<body>
+		<div id="div1" class="abc">
+			div 1
+			<span>Span 1</span>
+			<span>Span 2</span>
+			<span>Span 3</span>
+			<label>label 1</label>
+			<label>label 2</label>
+			<label>label 3</label>
+			<label>label 4</label>
+			<label>label 5</label>
+
+		</div>
+		<div id="div2" class="abc">
+			div 2
+			<span>Span 2</span>
+			<span>Span 3</span>
+			<label>label 1</label>
+			<label>label 2</label>
+		</div>
+		<div class="xyz">
+			div 3
+		</div>
+	</body>
+</html>
