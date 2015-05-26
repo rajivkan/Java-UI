@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>JQuery</title>
+		<script type="text/javascript" src="js/plugins/jquery/jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+
+			function validation(){
+				var uname = $("#txtUname");
+				var password = $("#txtPassword");
+				var email = $("#txtEmail");
+				if(uname.val() == ""){
+					alert("Username is required.");
+					uname.focus();
+					return false;
+				}
+				if(password.val() == ""){
+					alert("Password is required.");
+					password.focus();
+					return false;
+				}
+				if(email.val() == ""){
+					alert("Email is required.");
+					email.focus();
+					return false;
+				}
+				var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    			if(!re.test(email.val())){
+    				alert("Email is not in correct format.");
+    				email.focus();
+    				return false;
+    			}
+
+    			var userInfo = {};
+    			userInfo.username = uname.val();
+    			userInfo.password = password.val();
+    			userInfo.email = email.val();
+				
+    			var request = {};
+    			request.url = "http://localhost/test/test.php"
+    			request.method = "POST";
+    			request.data = userInfo;
+
+				// $.ajax(request).done(function(result){
+				// 	alert("Success. \n"+result);
+				// }).error(function(err){
+				// 	alert("Fail. \n"+ JSON.stringify(err));
+				// });
+
+				$.ajax(request).done(result_func).error(error_func)
+
+
+				function result_func(result){
+					alert("Success. \n"+result);
+				}
+
+				function error_func(err){
+					alert("Fail. \n"+ JSON.stringify(err));
+				}
+			}
+
+			function getStudentDetails(){
+				var request = {};
+    			request.url = "http://localhost/test/getstudentdetail.php?id=2";
+    			request.method = "GET";
+
+    			$.ajax(request).done(result_func).error(error_func)
+
+
+				function result_func(result){
+					alert("Success. \n"+result);
+				}
+
+				function error_func(err){
+					alert("Fail. \n"+ JSON.stringify(err));
+				}
+			}
+			getStudentDetails();
+		</script>
+	</head>
+	<body>
+		<table>
+				<tr>
+					<td>
+						Username:
+					</td>
+					<td>
+						<input name="uname" id="txtUname">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password:
+					</td>
+					<td>
+						<input name="pass" type="password" id="txtPassword">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<input id="txtEmail" name="email">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="reset" value="Reset">
+					</td>
+					<td>
+						<input type="submit" value="Register" onclick="return validation()">
+						<button onclick="getStudentDetails()">Get Student Details</buttom>
+					</td>
+				</tr>
+			</table>
+
+
+
+
+	</body>
+</html>
