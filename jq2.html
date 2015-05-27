@@ -67,14 +67,29 @@
 
 
 				function result_func(result){
-					alert("Success. \n"+result);
+					//alert("Success. \n"+result);
+					var studentRecord = JSON.parse(result).data;
+
+					for(var ctrl = 0; ctrl < studentRecord.length; ctrl++){
+						var item = studentRecord[ctrl];
+						var tr = $("<tr></tr>");
+						var td1 = $("<td></td>");
+						var td2 = $("<td></td>");
+
+						td1.html(item.name);
+						td2.html(item.email);
+						tr.append(td1);
+						tr.append(td2);
+
+						$("#tblRecord").append(tr);
+					}
 				}
 
 				function error_func(err){
 					alert("Fail. \n"+ JSON.stringify(err));
 				}
 			}
-			getStudentDetails();
+			//getStudentDetails();
 		</script>
 	</head>
 	<body>
@@ -114,6 +129,16 @@
 				</tr>
 			</table>
 
+			<table style="width:400px" id="tblRecord">
+				<tr>
+					<td>
+						Name
+					</td>
+					<td>
+						Email
+					</td>
+				</tr>
+			</table>
 
 
 
