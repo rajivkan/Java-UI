@@ -31,33 +31,13 @@
     			}
 
     			var userInfo = {};
-    			userInfo.uname = uname.val();
-    			userInfo.password = password.val();
+    			userInfo.name = uname.val();
     			userInfo.email = email.val();
 				
-    			var request = {};
-    			request.url = "http://localhost/test/test.php"
-    			request.method = "POST";
-    			request.data = userInfo;
-
-				// $.ajax(request).done(function(result){
-				// 	alert("Success. \n"+result);
-				// }).error(function(err){
-				// 	alert("Fail. \n"+ JSON.stringify(err));
-				// });
-
-				$.ajax(request).done(result_func).error(error_func)
-
-
-				function result_func(result){
-					alert("Success. \n"+result);
-				}
-
-				function error_func(err){
-					alert("Fail. \n"+ JSON.stringify(err));
-				}
+    			studentRecord.push(userInfo);
+    			appendData(userInfo);
 			}
-
+			var studentRecord = [];
 			function getStudentDetails(){
 				var request = {};
     			request.url = "http://localhost/test/getstudentdetail.php?id=2";
@@ -68,26 +48,34 @@
 
 				function result_func(result){
 					//alert("Success. \n"+result);
-					var studentRecord = JSON.parse(result).data;
+					studentRecord = JSON.parse(result).data;
 
-					for(var ctrl = 0; ctrl < studentRecord.length; ctrl++){
-						var item = studentRecord[ctrl];
-						var tr = $("<tr></tr>");
-						var td1 = $("<td></td>");
-						var td2 = $("<td></td>");
-
-						td1.html(item.name);
-						td2.html(item.email);
-						tr.append(td1);
-						tr.append(td2);
-
-						$("#tblRecord").append(tr);
-					}
+					displayRecord();
+					
 				}
 
 				function error_func(err){
 					alert("Fail. \n"+ JSON.stringify(err));
 				}
+			}
+
+			function displayRecord(){
+				for(var ctrl = 0; ctrl < studentRecord.length; ctrl++){
+					appendData(studentRecord[ctrl]);
+				}
+			}
+
+			function appendData(item){
+				var tr = $("<tr></tr>");
+				var td1 = $("<td></td>");
+				var td2 = $("<td></td>");
+
+				td1.html(item.name);
+				td2.html(item.email);
+				tr.append(td1);
+				tr.append(td2);
+
+				$("#tblRecord").append(tr);
 			}
 			//getStudentDetails();
 		</script>
@@ -96,7 +84,7 @@
 		<table>
 				<tr>
 					<td>
-						Username:
+						Name:
 					</td>
 					<td>
 						<input name="uname" id="txtUname">
@@ -123,7 +111,7 @@
 						<input type="reset" value="Reset">
 					</td>
 					<td>
-						<input type="button" value="Register" onclick="return validation()">
+						<input type="button" value="Add" onclick="return validation()">
 						<button onclick="getStudentDetails()">Get Student Details</buttom>
 					</td>
 				</tr>
