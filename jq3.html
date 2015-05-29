@@ -6,18 +6,13 @@
 
 			function validation(){
 				var uname = $("#txtUname");
-				var password = $("#txtPassword");
 				var email = $("#txtEmail");
 				if(uname.val() == ""){
 					alert("Username is required.");
 					uname.focus();
 					return false;
 				}
-				if(password.val() == ""){
-					alert("Password is required.");
-					password.focus();
-					return false;
-				}
+				
 				if(email.val() == ""){
 					alert("Email is required.");
 					email.focus();
@@ -30,13 +25,30 @@
     				return false;
     			}
 
-    			var userInfo = {};
-    			userInfo.name = uname.val();
-    			userInfo.email = email.val();
-				
-    			studentRecord.push(userInfo);
-    			appendData(userInfo);
+    			if($("#btnAddUpdate").val() == "Update"){
+    				editRecord.name = uname.val();
+    				editRecord.email = email.val();
+    				displayRecord();
+    			}else{
+    				var userInfo = {};
+	    			userInfo.name = uname.val();
+	    			userInfo.email = email.val();
+					
+	    			studentRecord.push(userInfo);
+	    			appendData(userInfo);
+    			}
+
+    			clearForm();
 			}
+
+			function clearForm(){
+				var uname = $("#txtUname");
+				var email = $("#txtEmail");
+				uname.val("");
+				email.val("");
+				$("#btnAddUpdate").val("Add");
+			}
+
 			var studentRecord = [];
 			function getStudentDetails(){
 				var request = {};
@@ -60,22 +72,64 @@
 			}
 
 			function displayRecord(){
+				$("#tblRecord").empty();
+
+				var tr = $("<tr></tr>");
+				var td1 = $("<td></td>");
+				var td2 = $("<td></td>");
+				var td3 = $("<td></td>");
+
+				td1.html("Name");
+				td2.html("Email");
+				td3.html("Actions");
+				tr.append(td1);
+				tr.append(td2);
+				tr.append(td3);
+				$("#tblRecord").append(tr);
+
 				for(var ctrl = 0; ctrl < studentRecord.length; ctrl++){
 					appendData(studentRecord[ctrl]);
 				}
 			}
 
 			function appendData(item){
+
 				var tr = $("<tr></tr>");
 				var td1 = $("<td></td>");
 				var td2 = $("<td></td>");
+				var td3 = $("<td></td>");
+
+				var btnEdit = $("<button></button>");
+				btnEdit.attr("name", item.name);
+				btnEdit.html("Edit");
+				btnEdit.click(function(){
+					onShow(this);
+				});
 
 				td1.html(item.name);
 				td2.html(item.email);
+				td3.append(btnEdit);
 				tr.append(td1);
 				tr.append(td2);
+				tr.append(td3);
 
 				$("#tblRecord").append(tr);
+			}
+
+			var editRecord= {};
+			function onShow(btn){
+				var uname = $("#txtUname");
+				var email = $("#txtEmail");
+				for(var i=0; i<studentRecord.length; i++){
+					if(studentRecord[i].name == $(btn).attr("name")){
+						uname.val(studentRecord[i].name);
+						email.val(studentRecord[i].email);
+						$("#btnAddUpdate").val("Update");
+						editRecord = studentRecord[i];
+						break;
+					}
+				}
+				
 			}
 			//getStudentDetails();
 		</script>
@@ -108,24 +162,17 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="reset" value="Reset">
+						<input type="reset" value="Reset" onclick="clearForm()">
 					</td>
 					<td>
-						<input type="button" value="Add" onclick="return validation()">
+						<input type="button" id="btnAddUpdate" value="Add" onclick="return validation()">
 						<button onclick="getStudentDetails()">Get Student Details</buttom>
 					</td>
 				</tr>
 			</table>
 
 			<table style="width:400px" id="tblRecord">
-				<tr>
-					<td>
-						Name
-					</td>
-					<td>
-						Email
-					</td>
-				</tr>
+				
 			</table>
 
 
